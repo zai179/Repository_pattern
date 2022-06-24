@@ -15,3 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/',[NameController::class, 'index']);
+Route::get('slug', function(){
+    $array = ['this is slug', 2022,10,01, 'Zain ali'];
+
+    $slug = Str::arrayToSlug($array);
+    dd($slug);
+});

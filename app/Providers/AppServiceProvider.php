@@ -5,7 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Repositories\Interface\RespositoreisInterface;
 use App\Repositories\NameRepository;
-
+use Illuminate\Support\Str;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -25,6 +25,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Str::macro('arrayToSlug', function(Array $array){
+            $string = implode("", $array);
+            $slug = Str::slug($string);
+            return $slug;
+        });
     }
 }
